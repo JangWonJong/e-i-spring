@@ -1,6 +1,12 @@
 package kr.co.eis.api.services;
 
 import kr.co.eis.api.domains.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+
+import java.util.List;
+import java.util.Optional;
 
 /**
  * packageName: kr.co.eis.api.repositories
@@ -14,7 +20,25 @@ import kr.co.eis.api.domains.User;
  * 2022-05-03     Jangwonjong       최초 생성
  */
 public interface UserService {
-    String join(User join);
+
     String login(User login);
-    String logout(User logout);
+
+    List<User> findAll();
+
+    List<User> findAll(Sort sort);
+
+    Page<User> findAll(Pageable pageable);
+
+    long count();
+
+    String put(User user);
+
+    String delete(User user);
+
+    String save(User user);
+
+    Optional<User> findById(String userid);
+
+    boolean existsById(String userid);
+
 }

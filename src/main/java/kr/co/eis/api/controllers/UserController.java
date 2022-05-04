@@ -1,10 +1,16 @@
 package kr.co.eis.api.controllers;
 
+import kr.co.eis.api.domains.User;
 import kr.co.eis.api.services.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 /**
  * packageName: kr.co.eis.api.controllers
@@ -24,16 +30,66 @@ public class UserController {
 
     private final UserService service;
 
-    @PostMapping("/join")
-    public String join(){
-        return null;
-    }
     @PostMapping("/login")
-    public String login(){
-        return null;
+    public String login(@RequestBody User user){
+
+        return service.login(user);
     }
-    @PostMapping("/logout")
+
+    @GetMapping("/logout")
     public String logout(){
-        return null;
+        return "";
     }
+
+    @GetMapping("/findAll")
+    public List<User> findAll() {
+        return service.findAll();
+    }
+
+    @GetMapping("/findAll/sort")
+    public List<User> findAll(Sort sort) {
+        return service.findAll(sort);
+    }
+
+    @GetMapping("/findAll/Pageable")
+    public Page<User> findAll(Pageable pageable) {
+        return service.findAll(pageable);
+    }
+
+    @GetMapping("/count")
+    public long count() {
+        return service.count();
+    }
+
+    @PutMapping("/put")
+    public String put(@RequestBody User user) {
+        return service.put(user);
+
+    }
+
+    @DeleteMapping("/delete")
+    public String delete(@RequestBody User user) {
+        return service.delete(user);
+
+    }
+
+    @PostMapping("/join")
+    public String save(@RequestBody User user) {
+        return service.save(user);
+
+    }
+
+    @GetMapping("/findById/{userid}")
+    public Optional<User> findById(@PathVariable String userid) {
+        return service.findById(userid);
+    }
+
+    @GetMapping("/existsById/{userid}")
+    public boolean existsById(@PathVariable String userid) {
+        return service.existsById(userid);
+    }
+
+
+
+
 }
