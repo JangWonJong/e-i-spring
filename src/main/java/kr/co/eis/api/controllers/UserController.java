@@ -7,6 +7,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ import java.util.Optional;
  * ======================================
  * 2022-05-03     Jangwonjong       최초 생성
  */
+@Controller
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
@@ -88,8 +90,5 @@ public class UserController {
     public boolean existsById(@PathVariable String userid) {
         return service.existsById(userid);
     }
-
-
-
 
 }
