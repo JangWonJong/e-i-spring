@@ -23,8 +23,6 @@ public interface UserService {
 
     String login(User login);
 
-    String logout(User logout);
-
     List<User> findAll();
 
     List<User> findAll(Sort sort);

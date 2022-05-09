@@ -33,10 +33,6 @@ public class UserServiceImpl implements UserService {
         return repository.login(user);
     }
 
-    @Override
-    public String logout(User user) {
-        return repository.logout(user);
-    }
 
     @Override
     public String put(User user) {
@@ -73,14 +69,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> findById(String userid) {
-        return Optional.empty();
+        return repository.findById(0L);
     }
 
     @Override
     public boolean existsById(String userid) {
-        return false;
+        return repository.existsById(0L);
     }
-
 
 
     @Override

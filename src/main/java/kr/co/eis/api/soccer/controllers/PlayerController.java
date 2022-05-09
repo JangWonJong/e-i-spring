@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("player")
+@RequestMapping("/player")
 public class PlayerController {
     private final PlayerService service;
 }

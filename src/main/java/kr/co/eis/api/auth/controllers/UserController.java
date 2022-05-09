@@ -50,7 +50,7 @@ public class UserController {
         return service.findAll(sort);
     }
 
-    @GetMapping("/findAll/Pageable")
+    @GetMapping("/findAll/pageable")
     public Page<User> findAll(Pageable pageable) {
         return service.findAll(pageable);
     }
