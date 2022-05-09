@@ -1,4 +1,4 @@
-package kr.co.eis.api.controllers;
+package kr.co.eis.api.common;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

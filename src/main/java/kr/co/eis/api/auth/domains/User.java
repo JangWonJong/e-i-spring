@@ -1,4 +1,4 @@
-package kr.co.eis.api.domains;
+package kr.co.eis.api.auth.domains;
 
 import lombok.Data;
 import lombok.Generated;

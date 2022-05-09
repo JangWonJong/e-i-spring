@@ -1,13 +1,11 @@
-package kr.co.eis.api.controllers;
+package kr.co.eis.api.auth.controllers;
 
-import kr.co.eis.api.domains.User;
-import kr.co.eis.api.services.UserService;
+import kr.co.eis.api.auth.domains.User;
+import kr.co.eis.api.auth.services.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +22,6 @@ import java.util.Optional;
  * ======================================
  * 2022-05-03     Jangwonjong       최초 생성
  */
-@Controller
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor

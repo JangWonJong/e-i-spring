@@ -1,7 +1,7 @@
-package kr.co.eis.api.services;
+package kr.co.eis.api.auth.services;
 
-import kr.co.eis.api.domains.User;
-import kr.co.eis.api.repositories.UserRepository;
+import kr.co.eis.api.auth.domains.User;
+import kr.co.eis.api.auth.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,6 +31,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public String login(User user) {
         return repository.login(user);
+    }
+
+    @Override
+    public String logout(User user) {
+        return repository.logout(user);
+    }
+
+    @Override
+    public String put(User user) {
+        repository.put(user);
+        return "";
     }
 
     @Override
@@ -70,11 +81,7 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-    @Override
-    public String put(User user) {
-        repository.put(user);
-        return "";
-    }
+
 
     @Override
     public long count() {

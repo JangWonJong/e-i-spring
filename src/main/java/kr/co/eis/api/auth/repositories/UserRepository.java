@@ -1,6 +1,6 @@
-package kr.co.eis.api.repositories;
+package kr.co.eis.api.auth.repositories;
 
-import kr.co.eis.api.domains.User;
+import kr.co.eis.api.auth.domains.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -19,4 +19,5 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Long> {
     String login(User user);
     void put(User user);
+    String logout(User user);
 }

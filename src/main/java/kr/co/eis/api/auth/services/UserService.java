@@ -1,6 +1,6 @@
-package kr.co.eis.api.services;
+package kr.co.eis.api.auth.services;
 
-import kr.co.eis.api.domains.User;
+import kr.co.eis.api.auth.domains.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -22,6 +22,8 @@ import java.util.Optional;
 public interface UserService {
 
     String login(User login);
+
+    String logout(User logout);
 
     List<User> findAll();
 
