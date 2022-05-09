@@ -9,7 +9,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * packageName: kr.co.eis.api.controllers
@@ -37,7 +36,7 @@ public class ArticleController {
     public List<Article> findAll(Sort sort) {
         return service.findAll(sort);
     }
-    @GetMapping("/findAll/pageeable")
+    @GetMapping("/findAll/pageable")
     public Page<Article> findAll(Pageable pageable) {
         return service.findAll(pageable);
     }
