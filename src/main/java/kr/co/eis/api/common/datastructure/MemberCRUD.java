@@ -57,12 +57,16 @@ public class MemberCRUD {
                             .build();
                     service.save(you);
                     break;
-                case "2":break;
-                case "3":
+                case "2":
                     Member temp = new Member();
-                    temp.setUserid("you");
-                    service.delete(temp);
-                    System.out.println("삭제된 값은"+temp);
+                    temp.setUserid("jang");
+                    service.update(temp);
+                    break;
+                case "3":
+                    Member temp1 = new Member();
+                    temp1.setUserid("you");
+                    service.delete(temp1);
+                    System.out.println("삭제된 값은"+temp1);
                     break;
                 case "4":
                     String res = "";
