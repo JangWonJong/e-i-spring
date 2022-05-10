@@ -65,14 +65,11 @@ public class MemberCRUD {
                     System.out.println("삭제된 값은"+temp);
                     break;
                 case "4":
+                    String res = "";
                     Member temp2 = new Member();
                     temp2.setUserid("you");
-                    service.findById(temp2.userid);
-                    if (temp2==null){
-                        System.out.println("찾는 값이 없습니다");
-                    }else {
-                        System.out.println("찾는 값은" + temp2 + "입니다");
-                    }
+                    res = (service.findById(temp2.userid)==null) ? "찾는 값이 없습니다" : String.format("찾는 값은 %s입니다", temp2);
+                    System.out.println(res);
                     break;
                 case "5":break;
                 case "6":
