@@ -67,8 +67,7 @@ public class MemberCRUD {
                 case "4":
                     Member temp2 = new Member();
                     temp2.setUserid("you");
-                    service.findById(temp2);
-                    System.out.println(temp2);
+                    service.findById(temp2.userid);
                     if (temp2==null){
                         System.out.println("찾는 값이 없습니다");
                     }else {
