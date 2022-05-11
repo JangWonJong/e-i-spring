@@ -1,5 +1,6 @@
 package kr.co.eis.api.common.datastructure;
 
+import static kr.co.eis.api.common.lambda.Lambda.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * packageName: kr.co.eis.api.common.datastructure
@@ -50,22 +52,13 @@ public class ApplelList {
                     service.save(pg);
                     break;
                 case "2":
-                    Apple temp = new Apple();
-                    temp.set("jang");
-                    service.update(temp);
+
                     break;
                 case "3":
-                    MemberCRUD.Member temp1 = new MemberCRUD.Member();
-                    temp1.setUserid("you");
-                    service.delete(temp1);
-                    System.out.println("삭제된 값은" + temp1);
+
                     break;
                 case "4":
-                    String res = "";
-                    MemberCRUD.Member temp2 = new MemberCRUD.Member();
-                    temp2.setUserid("you");
-                    res = (service.findById(temp2.userid) == null) ? "찾는 값이 없습니다" : String.format("찾는 값은 %s입니다", temp2);
-                    System.out.println(res);
+
                     break;
                 case "5":
                     break;
@@ -80,6 +73,10 @@ public class ApplelList {
                 case "9":
                     service.clear();
                     break;
+                case "10":
+                    System.out.println("사과 가격은"+ integer("1000"));
+                    System.out.println("array size"+ array(20).length);
+                    break;
                 default:
                     break;
 
@@ -87,7 +84,7 @@ public class ApplelList {
         }
     }
     @Data
-    static class Apple{
+    public static class Apple{
         protected String color, origin;
         protected int price;
 
@@ -97,13 +94,13 @@ public class ApplelList {
             this.price = builder.price;
         }
         @NoArgsConstructor
-        static class Builder{
+        public static class Builder{
             private String color, origin;
             private int price;
             public Builder color (String color){this.color=color; return this;}
             public Builder origin(String origin){this.origin=origin; return this;}
             public Builder price(int price){this.price=price; return this;}
-            Apple build(){return  new Apple(this);}
+            public Apple build(){return  new Apple(this);}
         }
         @Override public String toString(){
             return String.format("[apple spec] origin : %s, color : %s, price: %d",
@@ -153,12 +150,16 @@ public class ApplelList {
         }
         @Override
         public List<Apple> findByOrigin(String orgin) {
-            return null;
+            return list.stream()
+                    .filter(apple -> apple.getOrigin().equals(orgin))
+                    .collect(Collectors.toList());
         }
 
         @Override
         public List<Apple> findByColor(String color) {
-            return null;
+            return list.stream()
+                    .filter(apple -> apple.getColor().equals(color))
+                    .collect(Collectors.toList());
         }
 
         @Override
@@ -176,23 +177,7 @@ public class ApplelList {
             list.clear();
         }
     }
-    static List<Apple> filterApples(List<Apple> list, Predicate<Apple> predicate){
-        List<Apple> result = new ArrayList<>();
-        for(Apple apple: list){
-            if(predicate.test(apple)){
-                result.add(apple);
-            }
-        }
-        return result;
-    }
-    static List<Apple> filterApplesByOrigin(List<Apple> list, String origin){
-        List<Apple> result = new ArrayList<>();
-        for(Apple apple: list){
-            if(origin.equals(apple.getOrigin())){
-                result.add(apple);
-            }
-        }
-        return result;
-    }
+
+
 
 }
