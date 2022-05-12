@@ -4,7 +4,10 @@ import org.springframework.cglib.core.Predicate;
 import org.springframework.cglib.core.internal.Function;
 
 import java.util.Arrays;
+import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import static kr.co.eis.api.common.datastructure.ApplelList.Apple;
 
@@ -21,7 +24,7 @@ import static kr.co.eis.api.common.datastructure.ApplelList.Apple;
  */
 public class Lambda {
     public static void main(String[] args) {
-        System.out.println(Lambda.integer("900"));
+        /**System.out.println(Lambda.integer("900"));
         System.out.println(Lambda.string(555));
         System.out.println(string(new Apple.Builder().origin("영동").color("R").price(1000).build()));
         System.out.println(
@@ -33,8 +36,11 @@ public class Lambda {
                         )
                 ));
         System.out.println(!equals("1","1"));
-        System.out.println(array(5).length);
+        System.out.println(array(5).length);**/
+        System.out.println(random(1,6));
+        System.out.println(random2(1,6));
     }
+
     public static int integer(String arg){
         // Integer i = Integer.parseInt("900")
         Function<String, Integer> f = Integer::parseInt;
@@ -42,6 +48,7 @@ public class Lambda {
     }
     public static String string(Object object){
         // String s = String.valueOf(Object)
+
         Function<Object, String> f = String::valueOf;
         return f.apply(object);
     }
@@ -55,4 +62,17 @@ public class Lambda {
         Function<Integer, int[]> f = int[]::new;
             return f.apply(i);
     }
+    public static int random(int i, int j){
+        BiFunction<Integer, Integer, Integer> f = (t, u) -> (int)(Math.random()*u)+t;
+        return f.apply(i,j);
+    }
+    public static int random3(int i, int j){
+        BiFunction<Integer, Integer, Integer> f = (t,u) -> (int)(Math.random()*u)+t;
+        return f.apply(i,j);
+    }
+    public static int random2(int i, int j){
+        Supplier<Double> f = Math::random;
+        return (int)(f.get()*j)+i;
+    }
+
 }
