@@ -7,7 +7,7 @@ import java.util.function.BiFunction;
 
 /**
  * packageName: kr.co.eis.api.common.enums
- * fileName   : Calculator
+ * fileName   : Calc
  * author     : Jangwonjong
  * date       : 2022-05-13
  * desc       :
@@ -16,7 +16,7 @@ import java.util.function.BiFunction;
  * ======================================
  * 2022-05-13     Jangwonjong       최초 생성
  */
-public class Calculator {
+public class Calc {
 
     @RequiredArgsConstructor
     enum Operation{
@@ -32,10 +32,10 @@ public class Calculator {
         public int apply(int a, int b){return f.apply(a,b);}
     }
     @Test
-    void calculatorTest(){
-        System.out.println("+: "+Operation.PLUS.apply(10,5));
-        System.out.println("-: "+Operation.MINUS.apply(10,5));
-        System.out.println("*: "+Operation.MULTI.apply(10,5));
-        System.out.println("/: "+Operation.DIVIDE.apply(10,5));
+    void calcTest(){
+        System.out.println("+: "+ Calculator.Operation.PLUS.apply(10,5));
+        System.out.println("-: "+ Calculator.Operation.MINUS.apply(10,5));
+        System.out.println("*: "+ Calculator.Operation.MULTI.apply(10,5));
+        System.out.println("/: "+ Calculator.Operation.DIVIDE.apply(10,5));
     }
 }

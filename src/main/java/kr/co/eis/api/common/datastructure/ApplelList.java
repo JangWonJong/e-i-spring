@@ -3,6 +3,7 @@ package kr.co.eis.api.common.datastructure;
 import static kr.co.eis.api.common.lambda.Lambda.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,29 +28,11 @@ public class ApplelList {
         Scanner scanner = new Scanner(System.in);
         AppleService service = new AppleServiceImpl();
         while (true) {
-            System.out.println("0.Exit 1.save 2.update 3.delete 4.findById 5.findByName 6.findAll 7.count 8.existById 9.clear");
             switch (scanner.next()) {
                 case "0":
                     return;
                 case "1":
-                    Apple yd = new Apple.Builder()
-                            .origin("영동")
-                            .color("RED")
-                            .price(1000)
-                            .build();
-                    service.save(yd);
-                    Apple yd2 = new Apple.Builder()
-                            .origin("영동")
-                            .color("BLUE")
-                            .price(1500)
-                            .build();
-                    service.save(yd2);
-                    Apple pg = new Apple.Builder()
-                            .origin("풍기")
-                            .color("RED")
-                            .price(2000)
-                            .build();
-                    service.save(pg);
+
                     break;
                 case "2":
 
@@ -83,6 +66,47 @@ public class ApplelList {
             }
         }
     }
+    @Test
+    void applelistTest(){
+        System.out.println("0.Exit 1.save 2.update 3.delete 4.findById 5.findByName 6.findAll 7.count 8.existById 9.clear");
+
+        AppleService service = new AppleServiceImpl();
+        System.out.println("### 1. save ###");
+        Apple yd = new Apple.Builder()
+                .origin("영동")
+                .color("RED")
+                .price(1000)
+                .build();
+        service.save(yd);
+        Apple yd2 = new Apple.Builder()
+                .origin("영동")
+                .color("BLUE")
+                .price(1500)
+                .build();
+        service.save(yd2);
+        Apple pg = new Apple.Builder()
+                .origin("풍기")
+                .color("RED")
+                .price(2000)
+                .build();
+        service.save(pg);
+        System.out.println(yd);
+        System.out.println(yd2);
+        System.out.println(pg);
+        System.out.println("### 2. update ###");
+        service.update(1,new Apple.Builder().origin("서울").color("GREEN").price(3).build());
+        System.out.println("### 3. delete ###");
+        System.out.println("### 4. findById ###");
+        System.out.println("### 5. findByName ###");
+        System.out.println("### 6. findAll ###");
+        System.out.println(service.findAll());
+        System.out.println("### 7. count ###");
+        System.out.println("### 8. existById ###");
+        System.out.println("### 9. clear ###");
+        service.clear();
+    }
+
+
     @Data
     public static class Apple{
         protected String color, origin;
@@ -110,7 +134,7 @@ public class ApplelList {
     }
     interface AppleService{
         void save(Apple apple);
-        void update(Apple apple, int i);
+        void update(int i, Apple apple);
         void delete(Apple apple);
         List<Apple> findAll();
         List<Apple> findByOrigin(String orgin);
@@ -134,7 +158,7 @@ public class ApplelList {
         }
 
         @Override
-        public void update(Apple apple, int i) {
+        public void update(int i, Apple apple) {
             list.set(i, apple);
         }
 
