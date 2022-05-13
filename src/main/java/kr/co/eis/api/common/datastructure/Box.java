@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * packageName: kr.co.eis.api.common.datastructure
@@ -35,8 +36,8 @@ public class Box<T> {
     public void delete(T t) {
         list.remove(t);
     }
-    public T findAll() {
-        return (T) list;
+    public List<T> findAll() {
+        return list;
     }
     public T findById(int i) {
         return list.get(i);

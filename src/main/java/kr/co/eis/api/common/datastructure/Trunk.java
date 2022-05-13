@@ -24,15 +24,32 @@ public class Trunk<K, V> {
     Trunk() {
         this.map = new HashMap<>();
     }
-    public void save(K k, V v){map.put(k, v);}
-    public void update(K k, V v){map.replace(k, v);}
-    public void delete(K k){map.remove(k);}
-    public List<V> findAll(){return (List<V>) map.values();
+
+    public void save(K k, V v){
+        map.put(k, v);
     }
+
+    public void update(K k, V v){
+        map.replace(k, v);
+    }
+
+    public void delete(K k){
+        map.remove(k);
+    }
+
+    public List<V> findAll(){
+        return (List<V>) map.values();
+    }
+
     public V findById(K k){
-        return map.get(k);}
+        return map.get(k);
+    }
+
     public int count(){
-        return map.size();}
+        return map.size();
+    }
+
     public void clear(){
-        map.clear();}
+        map.clear();
+    }
 }
