@@ -3,6 +3,7 @@ package kr.co.eis.api.common.lambda;
 import org.springframework.cglib.core.Predicate;
 import org.springframework.cglib.core.internal.Function;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
@@ -63,16 +64,18 @@ public class Lambda {
             return f.apply(i);
     }
     public static int random(int i, int j){
-        BiFunction<Integer, Integer, Integer> f = (t, u) -> (int)(Math.random()*u)+t;
+        BiFunction<Integer, Integer, Integer> f = (a, b) -> (int)(Math.random()*b)+a;
         return f.apply(i,j);
     }
-    public static int random3(int i, int j){
-        BiFunction<Integer, Integer, Integer> f = (t,u) -> (int)(Math.random()*u)+t;
-        return f.apply(i,j);
-    }
+
+
     public static int random2(int i, int j){
         Supplier<Double> f = Math::random;
         return (int)(f.get()*j)+i;
     }
-
+    //makeFile()   File file = new File("d:\\example\\new_directory");
+    public static File makeFile(String  a){
+        Function< String,File > f = File::new;
+        return f.apply(a);
+    }
 }
