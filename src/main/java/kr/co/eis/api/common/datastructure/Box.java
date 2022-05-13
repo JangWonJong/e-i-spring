@@ -55,8 +55,9 @@ public class Box<K, V> {
     public void clear(){
         map.clear();
     }
+    // custom 부분
     // 회원목록요청시
-    public List<User> findAllUserList(){
+    public List<User> findAllList(){
         List<User> ls = new ArrayList<>();
         for(Map.Entry<K,V > e: map.entrySet()){
             ls.add((User) e.getValue());
@@ -64,11 +65,11 @@ public class Box<K, V> {
         return ls;
     }
 
-    // 회원 아이디 목록 요청시
-    public List<User> findAllUserKeyList(){
-        List<User> ls = new ArrayList<>();
+    // 테이블 키값 목록요청시
+    public List<V> findAllKeyList(){
+        List<V> ls = new ArrayList<>();
         for(Map.Entry<K,V > e: map.entrySet()){
-            ls.add((User) e.getValue());
+            ls.add(e.getValue());
         }
         return ls;
     }
