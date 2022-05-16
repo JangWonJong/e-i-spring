@@ -1,4 +1,4 @@
-package kr.co.eis.api.common.lambda;
+package kr.co.eis.api.common.lambdas;
 
 import org.junit.jupiter.api.Test;
 

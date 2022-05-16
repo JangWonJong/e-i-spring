@@ -1,6 +1,6 @@
 package kr.co.eis.api.common.datastructure;
 
-import static kr.co.eis.api.common.lambda.Lambda.*;
+import static kr.co.eis.api.common.lambdas.Lambda.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**

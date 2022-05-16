@@ -1,16 +1,11 @@
-package kr.co.eis.api.common.lambda;
+package kr.co.eis.api.common.lambdas;
 
-import org.springframework.cglib.core.Predicate;
 import org.springframework.cglib.core.internal.Function;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
-
-import static kr.co.eis.api.common.datastructure.ApplelList.Apple;
 
 /**
  * packageName: kr.co.eis.api.common.lambda
