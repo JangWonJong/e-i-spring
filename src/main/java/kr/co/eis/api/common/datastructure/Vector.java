@@ -30,6 +30,7 @@ public class Vector <T>{
     public void add(T t) {
         list.add(t);
     }
+    public void insert(T t, int i){list.add(i,t);}
     public void set(T t, int i) {
         list.set(i,t);
     }

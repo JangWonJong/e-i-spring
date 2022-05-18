@@ -43,6 +43,6 @@ public interface UserService {
 
     // custom
 
-    List<User> findUserName(String name);
+    List<User> findUserName(String name); 
 
 }
