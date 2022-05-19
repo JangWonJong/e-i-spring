@@ -15,6 +15,9 @@ import org.springframework.stereotype.Repository;
  * ======================================
  * 2022-05-09     Jangwonjong       최초 생성
  */
+
+interface PlayerCustomRepository{}
+
 @Repository
-public interface PlayerRepository extends JpaRepository<Player, Long> {
+public interface PlayerRepository extends JpaRepository<Player, Long>, PlayerCustomRepository {
 }

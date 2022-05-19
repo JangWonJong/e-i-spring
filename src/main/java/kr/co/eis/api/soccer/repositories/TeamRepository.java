@@ -15,6 +15,9 @@ import org.springframework.stereotype.Repository;
  * ======================================
  * 2022-05-09     Jangwonjong       최초 생성
  */
+
+interface TeamCustomRepository{}
+
 @Repository
-public interface TeamRepository extends JpaRepository<Team, Long> {
+public interface TeamRepository extends JpaRepository<Team, Long>,TeamCustomRepository {
 }

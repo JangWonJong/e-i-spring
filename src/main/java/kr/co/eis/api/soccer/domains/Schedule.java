@@ -25,16 +25,18 @@ import javax.persistence.*;
 @Entity
 @Table(name = "schedules")
 public class Schedule {
-    @Id @Column(name = "sche_date") @GeneratedValue
-    private long sche_date;
-    @Column private @NotNull String stadiumid;
-    @Column private @NotNull String gubun;
-    @Column private @NotNull String hometeamid;
-    @Column private @NotNull String awayteamid;
-    @Column private @NotNull String homescore;
-    @Column private @NotNull String awayscore;
+    @Id
+    @Column(name = "schedule_no")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) private long scheduleNo;
+    private String scheDate;
+    private String gubun;
+    private String hometeamId;
+    private String awayteamId;
+    private String homeScore;
+    private String awayScore;
+    private String stadiumId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "stadium_id")
-    Stadium stadium;
+    @JoinColumn(name = "stadium_no")
+    private Stadium stadium;
 }

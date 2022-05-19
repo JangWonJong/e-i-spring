@@ -15,9 +15,13 @@ import org.springframework.stereotype.Repository;
  * ======================================
  * 2022-05-03     Jangwonjong       최초 생성
  */
-@Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+
+interface UserCustomRepository{
     String login(User user);
     void put(User user);
-    String logout(User user);
+}
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long>, UserCustomRepository {
+
 }

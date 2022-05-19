@@ -28,14 +28,16 @@ import java.util.List;
 @Entity @Eager
 @Table(name = "stadiums")
 public class Stadium {
-    @Id @Column(name = "stadium_id") @GeneratedValue
-    private long stadium_id;
-    @Column private @NotNull String stadiumname;
-    @Column private @NotNull String hometeamid;
-    @Column private @NotNull String seatcount;
-    @Column private @NotNull String address;
-    @Column private @NotNull String ddd;
-    @Column private @NotNull String tel;
+    @Id
+    @Column(name = "stadium_no")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) private long stadiumNo;
+    @Column(nullable = false) private String stadiumId;
+    private String stadiumName;
+    private String hometeamId;
+    private String seatCount;
+    private String address;
+    private String ddd;
+    private String tel;
 
     @OneToMany(mappedBy = "stadium")
     List<Schedule> schedules = new ArrayList<>();

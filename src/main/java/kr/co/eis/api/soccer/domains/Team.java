@@ -25,21 +25,23 @@ import java.util.List;
 @Entity
 @Table(name = "teams")
 public class Team {
-    @Id @Column(name = "team_id") @GeneratedValue
-    private long teamid;
-    @Column String stadiumid;
-    @Column private @NotNull String region;
-    @Column private @NotNull String teamname;
-    @Column private @NotNull String eteamname;
-    @Column private @NotNull String origyyyy;
-    @Column private @NotNull String zipcode1;
-    @Column private @NotNull String zipcode2;
-    @Column private @NotNull String address;
-    @Column private @NotNull String ddd;
-    @Column private @NotNull String tel;
-    @Column private @NotNull String fax;
-    @Column private @NotNull String homepage;
-    @Column private @NotNull String owner;
+    @Id
+    @Column(name = "team_no")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) private long teamNo;
+    @Column(nullable = false) private String teamId;
+    @Column(nullable = false) private String stadiumId;
+    private String regionName;
+    private String teamName;
+    private String eTeamName;
+    private String origYyyy;
+    private String zipCode1;
+    private String zipCode2;
+    private String address;
+    private String ddd;
+    private String tel;
+    private String fax;
+    private String homepage;
+    private String owner;
 
     @OneToMany(mappedBy = "team")
     List<Player> players = new ArrayList<>();
