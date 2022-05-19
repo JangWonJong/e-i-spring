@@ -1,9 +1,6 @@
 package kr.co.eis.api.board.domains;
 
-import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -22,8 +19,8 @@ import javax.persistence.*;
 @Data
 @Component
 @Entity
-@Table(name = "articles")
-public class Article {
+@Table(name = "articles1")
+public class Article1 {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column private String projects;

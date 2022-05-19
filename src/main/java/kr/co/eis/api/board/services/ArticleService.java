@@ -1,12 +1,11 @@
 package kr.co.eis.api.board.services;
 
-import kr.co.eis.api.board.domains.Article;
+import kr.co.eis.api.board.domains.Article1;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * packageName: kr.co.eis.api.board.services
@@ -21,10 +20,10 @@ import java.util.Optional;
  */
 
 public interface ArticleService {
-    List<Article> findAll();
-    List<Article> findAll(Sort sort);
-    Page<Article> findAll(Pageable pageable);
+    List<Article1> findAll();
+    List<Article1> findAll(Sort sort);
+    Page<Article1> findAll(Pageable pageable);
     long count();
-    String delete(Article article);
-    String save(Article article);
+    String delete(Article1 article);
+    String save(Article1 article);
 }

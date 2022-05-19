@@ -1,6 +1,7 @@
 package kr.co.eis.api.soccer.domains;
 
-import lombok.Data;
+import com.sun.istack.NotNull;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -16,18 +17,24 @@ import javax.persistence.*;
  * ======================================
  * 2022-05-09     Jangwonjong       최초 생성
  */
-@Data
+@Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Component
 @Entity
-@Table(name = "schedule")
+@Table(name = "schedules")
 public class Schedule {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String stadiumid;
-    private String schedate;
-    private String gubun;
-    private String hometeamid;
-    private String awayteamid;
-    private String homescore;
-    private String awayscore;
+    @Id @Column(name = "sche_date") @GeneratedValue
+    private long sche_date;
+    @Column private @NotNull String stadiumid;
+    @Column private @NotNull String gubun;
+    @Column private @NotNull String hometeamid;
+    @Column private @NotNull String awayteamid;
+    @Column private @NotNull String homescore;
+    @Column private @NotNull String awayscore;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "stadium_id")
+    Stadium stadium;
 }

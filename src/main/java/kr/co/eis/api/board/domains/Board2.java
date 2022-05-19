@@ -16,5 +16,5 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
-public class Board {
+public class Board2 {
 }

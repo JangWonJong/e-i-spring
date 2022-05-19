@@ -38,8 +38,6 @@ public class User {
     @NotNull private String regDate;
 
     @OneToMany(mappedBy = "user")
-    List<Article> a = new ArrayList<>();
+    List<Article> ls = new ArrayList<>();
 
-    @OneToMany(mappedBy = "board")
-    List<Article> board = new ArrayList<>();
 }
