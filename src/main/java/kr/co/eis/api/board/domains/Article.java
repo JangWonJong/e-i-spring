@@ -1,11 +1,11 @@
-package kr.co.eis.api.auth.domains;
+package kr.co.eis.api.board.domains;
 
 import com.sun.istack.NotNull;
+import kr.co.eis.api.auth.domains.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
 

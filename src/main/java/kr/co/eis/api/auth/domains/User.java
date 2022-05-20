@@ -1,6 +1,7 @@
 package kr.co.eis.api.auth.domains;
 
 import com.sun.istack.NotNull;
+import kr.co.eis.api.board.domains.Article;
 import lombok.*;
 import org.springframework.data.repository.cdi.Eager;
 import org.springframework.stereotype.Component;
