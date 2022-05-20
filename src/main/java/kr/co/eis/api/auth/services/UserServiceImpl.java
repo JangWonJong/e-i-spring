@@ -29,17 +29,17 @@ public class UserServiceImpl implements UserService {
     public final UserRepository repository;
 
 
-    @Override
+    /*@Override
     public String login(User user) {
         return repository.login(user);
-    }
+    }*/
 
 
-    @Override
+    /*@Override
     public String put(User user) {
         repository.put(user);
         return "";
-    }
+    }*/
 
     @Override
     public List<User> findAll() {

@@ -1,5 +1,14 @@
 package kr.co.eis.api.soccer.services;
 
+import kr.co.eis.api.auth.domains.User;
+import kr.co.eis.api.soccer.domains.Team;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+
+import java.util.List;
+import java.util.Optional;
+
 /**
  * packageName: kr.co.eis.api.soccer.services
  * fileName   : TeamService
@@ -12,4 +21,19 @@ package kr.co.eis.api.soccer.services;
  * 2022-05-09     Jangwonjong       최초 생성
  */
 public interface TeamService {
+    List<Team> findAll();
+
+    List<Team> findAll(Sort sort);
+
+    Page<Team> findAll(Pageable pageable);
+
+    long count();
+
+    String delete(Team team);
+
+    String save(Team team);
+
+    Optional<Team> findById(String teamId);
+
+    boolean existsById(String teamId);
 }

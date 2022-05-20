@@ -19,8 +19,8 @@ import javax.persistence.*;
 @Data
 @Component
 @Entity
-@Table(name = "articles1")
-public class Article1 {
+@Table(name = "articles2")
+public class Article2 {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column private String projects;

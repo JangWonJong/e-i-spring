@@ -21,7 +21,7 @@ import java.util.Optional;
  */
 public interface UserService {
 
-    String login(User login);
+    //String login(User login);
 
     List<User> findAll();
 
@@ -31,7 +31,7 @@ public interface UserService {
 
     long count();
 
-    String put(User user);
+    //String put(User user);
 
     String delete(User user);
 

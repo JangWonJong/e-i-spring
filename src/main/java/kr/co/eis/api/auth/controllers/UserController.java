@@ -31,8 +31,7 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(@RequestBody User user){
-
-        return service.login(user);
+        return "";
     }
 
     @GetMapping("/logout")
@@ -62,8 +61,7 @@ public class UserController {
 
     @PutMapping("/put")
     public String put(@RequestBody User user) {
-        return service.put(user);
-
+        return "";
     }
 
     @DeleteMapping("/delete")

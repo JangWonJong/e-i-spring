@@ -1,6 +1,6 @@
 package kr.co.eis.api.board.services;
 
-import kr.co.eis.api.board.domains.Article1;
+import kr.co.eis.api.board.domains.Article2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Pageable;
@@ -20,10 +20,10 @@ import java.util.List;
  */
 
 public interface ArticleService {
-    List<Article1> findAll();
-    List<Article1> findAll(Sort sort);
-    Page<Article1> findAll(Pageable pageable);
+    List<Article2> findAll();
+    List<Article2> findAll(Sort sort);
+    Page<Article2> findAll(Pageable pageable);
     long count();
-    String delete(Article1 article);
-    String save(Article1 article);
+    String delete(Article2 article);
+    String save(Article2 article);
 }
