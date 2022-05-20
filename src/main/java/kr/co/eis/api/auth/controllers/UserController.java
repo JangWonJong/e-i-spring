@@ -59,8 +59,8 @@ public class UserController {
         return service.count();
     }
 
-    @PutMapping("/put")
-    public String put(@RequestBody User user) {
+    @PutMapping("/update")
+    public String update(@RequestBody User user) {
         return "";
     }
 

@@ -26,10 +26,16 @@ interface TeamCustomRepository{
             nativeQuery = true)
     int update(@Param("tel") String tel, @Param("fax") String fax);
 
-    // 001. 전체 축구팀 목록을 팀이름 오름차순으로 출력
+    // 001. 전체 축구팀  목록을 팀이름 오름차순으로 출력
     @Query(value = "SELECT t.teamName AS teamName FROM Team t ORDER BY t.teamName",
             nativeQuery = true)
     List<String> findTeamNamesAsc();
+
+    // 005-2 수원팀의 ID는?
+    @Query(value = "SELECT t.teamID FROM Team t WHERE t.regionName 수원",
+            nativeQuery = true)
+    List<String> findTeamId();
+
 
 
 }

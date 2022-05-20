@@ -18,7 +18,7 @@ import org.springframework.stereotype.Repository;
 
 interface UserCustomRepository{
     String login(User user);
-    void put(User user);
+    void update(User user);
 }
 
 @Repository

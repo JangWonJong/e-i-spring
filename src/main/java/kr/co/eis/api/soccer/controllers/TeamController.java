@@ -73,6 +73,4 @@ public class TeamController {
         return service.existsById(teamId);
     }
 
-    /*@GetMapping("/findTeamNamesAsc")
-    public List<String> findTeamNamesAsc(){return service.findTeamNamesAsc();}*/
-}
+   }
