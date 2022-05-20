@@ -22,7 +22,7 @@ import java.util.List;
  * 2022-05-04     Jangwonjong       최초 생성
  */
 @RestController
-@RequestMapping("/article")
+@RequestMapping("/articles")
 @RequiredArgsConstructor
 public class ArticleController {
     private final ArticleService service;

@@ -72,4 +72,7 @@ public class TeamController {
     public boolean existsById(@PathVariable String teamId) {
         return service.existsById(teamId);
     }
+
+    /*@GetMapping("/findTeamNamesAsc")
+    public List<String> findTeamNamesAsc(){return service.findTeamNamesAsc();}*/
 }

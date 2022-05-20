@@ -23,7 +23,7 @@ import java.util.Optional;
  * 2022-05-09     Jangwonjong       최초 생성
  */
 @RestController
-@RequestMapping("/board")
+@RequestMapping("/boards")
 @RequiredArgsConstructor
 public class BoardController {
     private final BoardService service;
