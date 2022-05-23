@@ -49,5 +49,5 @@ interface PlayerCustomRepository{
 }
 
 @Repository
-public interface PlayerRepository extends JpaRepository<Player, Long>, PlayerCustomRepository {
+public interface PlayerRepository extends JpaRepository<Player, Long>{
 }
