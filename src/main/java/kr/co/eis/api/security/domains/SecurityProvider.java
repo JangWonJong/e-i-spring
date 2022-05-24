@@ -1,6 +1,7 @@
 package kr.co.eis.api.security.domains;
 
 import kr.co.eis.api.auth.domains.Role;
+import kr.co.eis.api.security.services.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Value;
