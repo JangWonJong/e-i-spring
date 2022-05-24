@@ -1,11 +1,10 @@
-package kr.co.eis.api.auth.domains;
+package kr.co.eis.api.user.domains;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 /**
  * packageName: kr.co.eis.api.auth.domains

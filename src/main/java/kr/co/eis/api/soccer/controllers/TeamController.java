@@ -1,8 +1,6 @@
 package kr.co.eis.api.soccer.controllers;
 
-import kr.co.eis.api.auth.domains.User;
 import kr.co.eis.api.soccer.domains.Team;
-import kr.co.eis.api.soccer.services.ScheduleService;
 import kr.co.eis.api.soccer.services.TeamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

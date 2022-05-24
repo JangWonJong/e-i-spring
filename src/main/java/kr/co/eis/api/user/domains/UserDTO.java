@@ -1,4 +1,4 @@
-package kr.co.eis.api.auth.domains;
+package kr.co.eis.api.user.domains;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -20,13 +20,13 @@ import java.util.List;
 
 @Component @Data
 public class UserDTO {
-    @ApiModelProperty(position = 0) private long userId;
-    @ApiModelProperty(position = 1) String username;
-    @ApiModelProperty(position = 2) String password;
-    @ApiModelProperty(position = 3) String name;
-    @ApiModelProperty(position = 4) String email;
-    @ApiModelProperty(position = 5) private String regDate;
-    @ApiModelProperty(position = 6) private String token;
-    @ApiModelProperty(position = 7) private List<Role> roles;
+    @ApiModelProperty(position = 1) private long userId;
+    @ApiModelProperty(position = 2) String username;
+    @ApiModelProperty(position = 3) String password;
+    @ApiModelProperty(position = 4) String name;
+    @ApiModelProperty(position = 5) String email;
+    @ApiModelProperty(position = 6) private String regDate;
+    @ApiModelProperty(position = 7) private String token;
+    @ApiModelProperty(position = 8) private List<Role> roles;
 
 }

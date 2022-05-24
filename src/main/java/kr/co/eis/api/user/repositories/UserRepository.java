@@ -1,6 +1,6 @@
-package kr.co.eis.api.auth.repositories;
+package kr.co.eis.api.user.repositories;
 
-import kr.co.eis.api.auth.domains.User;
+import kr.co.eis.api.user.domains.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

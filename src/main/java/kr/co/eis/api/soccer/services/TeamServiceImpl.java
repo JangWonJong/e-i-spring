@@ -1,6 +1,5 @@
 package kr.co.eis.api.soccer.services;
 
-import kr.co.eis.api.auth.domains.User;
 import kr.co.eis.api.soccer.domains.Team;
 import kr.co.eis.api.soccer.repositories.TeamRepository;
 import lombok.RequiredArgsConstructor;
