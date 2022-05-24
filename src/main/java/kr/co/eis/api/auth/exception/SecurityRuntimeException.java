@@ -16,7 +16,7 @@ import org.springframework.http.HttpStatus;
  * 2022-05-24     Jangwonjong       최초 생성
  */
 @Getter @RequiredArgsConstructor
-public class SecurityRuntimeException {
+public class SecurityRuntimeException extends RuntimeException{
     private static final long SerializableUID = 1L;
 
     private final String msg;
