@@ -1,5 +1,6 @@
 package kr.co.eis.api.common.lambdas;
 
+import kr.co.eis.api.auth.domains.Messenger;
 import org.springframework.cglib.core.internal.Function;
 
 import java.io.File;
@@ -42,6 +43,15 @@ public class Lambda {
         Function<String, Integer> f = Integer::parseInt;
         return f.apply(arg);
     }
+    public static long longParser(String s){
+        Function<String, Long> f = Long::parseLong;
+        return f.apply(s);
+    }
+    public static float floatParser(String s){
+        Function<String, Float> f = Float::parseFloat;
+        return f.apply(s);
+    }
+
     public static String string(Object object){
         // String s = String.valueOf(Object)
 

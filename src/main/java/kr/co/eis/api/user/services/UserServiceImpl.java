@@ -1,16 +1,28 @@
 package kr.co.eis.api.user.services;
 
+import kr.co.eis.api.auth.configs.AuthProvider;
+import kr.co.eis.api.auth.domains.Messenger;
+import kr.co.eis.api.auth.exception.SecurityRuntimeException;
+import kr.co.eis.api.user.domains.Role;
 import kr.co.eis.api.user.domains.User;
+import kr.co.eis.api.user.domains.UserDTO;
 import kr.co.eis.api.user.repositories.UserRepository;
 import kr.co.eis.api.common.datastructure.Box;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static kr.co.eis.api.common.lambdas.Lambda.longParser;
+import static kr.co.eis.api.common.lambdas.Lambda.string;
 
 /**
  * packageName: kr.co.eis.api.services
@@ -26,20 +38,34 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-    public final UserRepository repository;
+    private final UserRepository repository;
+    private final PasswordEncoder encoder;
+    private final ModelMapper modelMapper;
+    private final AuthProvider provider;
 
 
-    /*@Override
-    public String login(User user) {
-        return repository.login(user);
-    }*/
+    @Override
+    public UserDTO login(User user) {
+        try {
+            UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+            User findUser = repository.findByUsername(user.getUsername()).orElse(null);
+            String pw = repository.findByUsername(user.getUsername()).get().getPassword();
+            boolean checkPassword = encoder.matches(user.getPassword(), pw);
+            String username = user.getUsername();
+            List<Role> roles = findUser.getRoles();
+            String token = checkPassword ? provider.createToken(username, roles) : "Wrong Password";
+            userDTO.setToken(token);
+            return userDTO;
+        }catch (Exception e){
+            throw new SecurityRuntimeException("유효하지 않은 아이디/비밀번호", HttpStatus.UNPROCESSABLE_ENTITY);
 
+        }
+    }
 
-    /*@Override
-    public String update(User user) {
-        repository.update(user);
-        return "";
-    }*/
+    @Override
+    public Messenger logout() {
+        return Messenger.builder().build();
+    }
 
     @Override
     public List<User> findAll() {
@@ -57,15 +83,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String delete(User user) {
-        repository.delete(user);
-        return "";
+    public Messenger delete(User user) {
+        return Messenger.builder().build();
     }
 
     @Override
-    public String save(User user) {
-        repository.save(user);
-        return null;
+    public Messenger save(User user) {
+        String result = "";
+        if(repository.findByUsername(user.getUsername()).isEmpty()){
+            List<Role> list = new ArrayList<>();
+            list.add(Role.USER);
+            repository.save(User.builder().password(encoder.encode(user.getPassword()))
+                    .roles(list).build());
+            result = "SUCCESS";
+        }else {
+            result = "FAIL";
+        }
+        return Messenger.builder().message(result).build();
     }
 
     @Override
@@ -74,8 +108,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean existsById(String userid) {
-        return repository.existsById(0L);
+    public Messenger existsById(String userid) {
+        return repository.existsById(longParser(userid))
+                ? Messenger.builder().message("Exist").build()
+                : Messenger.builder().message("Not Exist").build();
     }
 
     @Override
@@ -89,8 +125,13 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public long count() {
-        return repository.count();
+    public Messenger count() {
+        return Messenger.builder().message(string(repository.count())).build();
+    }
+
+    @Override
+    public Messenger update(User user) {
+        return Messenger.builder().build();
     }
 }
 

@@ -1,11 +1,14 @@
 package kr.co.eis.api.user.controllers;
 
+import kr.co.eis.api.auth.domains.Messenger;
 import kr.co.eis.api.user.domains.User;
+import kr.co.eis.api.user.domains.UserDTO;
 import kr.co.eis.api.user.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,13 +33,13 @@ public class UserController {
     private final UserService service;
 
     @PostMapping("/login")
-    public String login(@RequestBody User user){
-        return "";
+    public ResponseEntity<UserDTO> login(@RequestBody User user){
+        return ResponseEntity.ok(service.login(user));
     }
 
     @GetMapping("/logout")
-    public String logout(){
-        return "";
+    public ResponseEntity<Messenger> logout(){
+        return ResponseEntity.ok(service.logout());
     }
 
     @GetMapping("/findAll")
@@ -55,23 +58,23 @@ public class UserController {
     }
 
     @GetMapping("/count")
-    public long count() {
+    public Messenger count() {
         return service.count();
     }
 
     @PutMapping("/update")
-    public String update(@RequestBody User user) {
-        return "";
+    public ResponseEntity<Messenger> update(@RequestBody User user) {
+        return ResponseEntity.ok(service.update(user));
     }
 
     @DeleteMapping("/delete")
-    public String delete(@RequestBody User user) {
+    public Messenger delete(@RequestBody User user) {
         return service.delete(user);
 
     }
 
     @PostMapping("/join")
-    public String save(@RequestBody User user) {
+    public Messenger save(@RequestBody User user) {
         return service.save(user);
 
     }
@@ -82,7 +85,7 @@ public class UserController {
     }
 
     @GetMapping("/existsById/{userid}")
-    public boolean existsById(@PathVariable String userid) {
+    public Messenger existsById(@PathVariable String userid) {
         return service.existsById(userid);
     }
 
