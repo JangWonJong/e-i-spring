@@ -1,10 +1,12 @@
 package kr.co.eis.api.user.controllers;
 
+import io.swagger.annotations.*;
 import kr.co.eis.api.auth.domains.Messenger;
 import kr.co.eis.api.user.domains.User;
 import kr.co.eis.api.user.domains.UserDTO;
 import kr.co.eis.api.user.services.UserService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -25,16 +27,24 @@ import java.util.Optional;
  * ======================================
  * 2022-05-03     Jangwonjong       최초 생성
  */
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@Api(tags = "users")
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService service;
+    private final ModelMapper modelMapper;
 
     @PostMapping("/login")
-    public ResponseEntity<UserDTO> login(@RequestBody User user){
-        return ResponseEntity.ok(service.login(user));
+    @ApiOperation(value = "${UserController.login}")
+    @ApiResponses(value = {
+            @ApiResponse(code = 400, message = "Something Wrong"),
+            @ApiResponse(code = 422, message = "유효하지 않은 아이디 / 비밀번호")
+    })
+    public ResponseEntity<UserDTO> login(@ApiParam("Login User")@RequestBody User user){
+        return ResponseEntity.ok(service.login(modelMapper.map(user, User.class)));
     }
 
     @GetMapping("/logout")
@@ -43,23 +53,23 @@ public class UserController {
     }
 
     @GetMapping("/findAll")
-    public List<User> findAll() {
-        return service.findAll();
+    public ResponseEntity<List<User>> findAll() {
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/findAll/sort")
-    public List<User> findAll(Sort sort) {
-        return service.findAll(sort);
+    public ResponseEntity<List<User>> findAll(Sort sort) {
+        return ResponseEntity.ok(service.findAll(sort));
     }
 
     @GetMapping("/findAll/pageable")
-    public Page<User> findAll(Pageable pageable) {
-        return service.findAll(pageable);
+    public ResponseEntity<Page<User>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(service.findAll(pageable));
     }
 
     @GetMapping("/count")
-    public Messenger count() {
-        return service.count();
+    public ResponseEntity<Messenger> count() {
+        return ResponseEntity.ok(service.count());
     }
 
     @PutMapping("/update")
@@ -68,25 +78,32 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
-    public Messenger delete(@RequestBody User user) {
-        return service.delete(user);
+    public ResponseEntity<Messenger> delete(@RequestBody User user) {
+        return ResponseEntity.ok(service.delete(user));
 
     }
 
     @PostMapping("/join")
-    public Messenger save(@RequestBody User user) {
-        return service.save(user);
+    @ApiOperation(value = "${UserController.join}")
+    @ApiResponses(value = {
+            @ApiResponse(code = 400, message = "Something Wrong"),
+            @ApiResponse(code = 403, message = "승인거절"),
+            @ApiResponse(code = 422, message = "중복된 ID")
+    })
+    public ResponseEntity<Messenger> save(@ApiParam("Join User") @RequestBody User user) {
+        System.out.println("회원가입 정보: "+ user.toString());
+        return ResponseEntity.ok(service.save(modelMapper.map(user, User.class)));
 
     }
 
     @GetMapping("/findById/{userid}")
-    public Optional<User> findById(@PathVariable String userid) {
-        return service.findById(userid);
+    public ResponseEntity<Optional<User>> findById(@PathVariable String userid) {
+        return ResponseEntity.ok(service.findById(userid));
     }
 
     @GetMapping("/existsById/{userid}")
-    public Messenger existsById(@PathVariable String userid) {
-        return service.existsById(userid);
+    public ResponseEntity<Messenger> existsById(@PathVariable String userid) {
+        return ResponseEntity.ok(service.existsById(userid));
     }
 
 }

@@ -4,8 +4,10 @@ import kr.co.eis.api.auth.domains.Messenger;
 import org.springframework.cglib.core.internal.Function;
 
 import java.io.File;
+import java.util.Date;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
@@ -50,6 +52,10 @@ public class Lambda {
     public static float floatParser(String s){
         Function<String, Float> f = Float::parseFloat;
         return f.apply(s);
+    }
+    public static String date(){
+        Supplier<Date> f = Date::new;
+        return String.valueOf(f.get());
     }
 
     public static String string(Object object){

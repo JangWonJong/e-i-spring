@@ -21,8 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static kr.co.eis.api.common.lambdas.Lambda.longParser;
-import static kr.co.eis.api.common.lambdas.Lambda.string;
+import static kr.co.eis.api.common.lambdas.Lambda.*;
 
 /**
  * packageName: kr.co.eis.api.services
@@ -40,8 +39,8 @@ import static kr.co.eis.api.common.lambdas.Lambda.string;
 public class UserServiceImpl implements UserService {
     private final UserRepository repository;
     private final PasswordEncoder encoder;
-    private final ModelMapper modelMapper;
     private final AuthProvider provider;
+    private final ModelMapper modelMapper;
 
 
     @Override
@@ -93,7 +92,9 @@ public class UserServiceImpl implements UserService {
         if(repository.findByUsername(user.getUsername()).isEmpty()){
             List<Role> list = new ArrayList<>();
             list.add(Role.USER);
-            repository.save(User.builder().password(encoder.encode(user.getPassword()))
+            repository.save(User.builder()
+                    .regDate(date())
+                    .password(encoder.encode(user.getPassword()))
                     .roles(list).build());
             result = "SUCCESS";
         }else {
