@@ -2,8 +2,14 @@ package kr.co.eis.api.common.lambdas;
 
 import org.junit.jupiter.api.Test;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.function.Supplier;
+
+import static kr.co.eis.api.common.lambdas.Lambda.string;
 
 /**
  * packageName: kr.co.eis.api.common.lambdas
@@ -25,9 +31,19 @@ public class LambdaLab {
         Supplier<Date> f = Date::new;
         return String.valueOf(f.get());
     }
+
+    public static String date2(){
+        Supplier<String> f = () -> string(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
+        return f.get();
+    }
+    public static String date3(){
+        Supplier<String> f = () -> string(LocalDate.now());
+        return f.get();
+    }
     @Test
     public void testsolution(){
-        System.out.println();
         System.out.println(date());
+        System.out.println(date2());
+        System.out.println(date3());
     }
 }

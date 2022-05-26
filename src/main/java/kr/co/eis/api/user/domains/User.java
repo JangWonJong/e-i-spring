@@ -23,14 +23,14 @@ import java.util.List;
  */
 
 @AllArgsConstructor @NoArgsConstructor @Getter @Builder
-@Component
+@Setter
+@ToString
 @Entity @Eager
 @Table(name = "users")
 public class User {
     @Id
     @Column(name = "user_id")
-    @GeneratedValue
-    private long userId;
+    @GeneratedValue private long userId;
     @Column private @NotNull String username;
     @Column private @NotNull String password;
     @Column private @NotNull String name;

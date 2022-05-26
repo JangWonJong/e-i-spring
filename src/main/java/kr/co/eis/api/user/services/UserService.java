@@ -23,7 +23,7 @@ import java.util.Optional;
  */
 public interface UserService {
 
-    UserDTO login(User user);
+    UserDTO login(UserDTO user);
 
     Messenger logout();
 
@@ -39,7 +39,7 @@ public interface UserService {
 
     Messenger delete(User user);
 
-    Messenger save(User user);
+    Messenger save(UserDTO user);
 
     Optional<User> findById(String userid);
 

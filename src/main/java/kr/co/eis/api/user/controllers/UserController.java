@@ -28,7 +28,7 @@ import java.util.Optional;
  * 2022-05-03     Jangwonjong       최초 생성
  */
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@Api(tags = "users")
+@Api(tags = "user")
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
@@ -43,8 +43,8 @@ public class UserController {
             @ApiResponse(code = 400, message = "Something Wrong"),
             @ApiResponse(code = 422, message = "유효하지 않은 아이디 / 비밀번호")
     })
-    public ResponseEntity<UserDTO> login(@ApiParam("Login User")@RequestBody User user){
-        return ResponseEntity.ok(service.login(modelMapper.map(user, User.class)));
+    public ResponseEntity<UserDTO> login(@ApiParam("Login User")@RequestBody UserDTO user){
+        return ResponseEntity.ok(service.login(user));
     }
 
     @GetMapping("/logout")
@@ -90,9 +90,9 @@ public class UserController {
             @ApiResponse(code = 403, message = "승인거절"),
             @ApiResponse(code = 422, message = "중복된 ID")
     })
-    public ResponseEntity<Messenger> save(@ApiParam("Join User") @RequestBody User user) {
+    public ResponseEntity<Messenger> save(@ApiParam("Join User") @RequestBody UserDTO user) {
         System.out.println("회원가입 정보: "+ user.toString());
-        return ResponseEntity.ok(service.save(modelMapper.map(user, User.class)));
+        return ResponseEntity.ok(service.save(user));
 
     }
 
