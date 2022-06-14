@@ -27,7 +27,7 @@ public class LambdaLab {
 
     }
 
-    public static String date(){
+    public static String date1(){
         Supplier<Date> f = Date::new;
         return String.valueOf(f.get());
     }
@@ -36,14 +36,14 @@ public class LambdaLab {
         Supplier<String> f = () -> string(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
         return f.get();
     }
-    public static String date3(){
+    public static String date(){
         Supplier<String> f = () -> string(LocalDate.now());
         return f.get();
     }
     @Test
     public void testsolution(){
-        System.out.println(date());
+        System.out.println(date1());
         System.out.println(date2());
-        System.out.println(date3());
+        System.out.println(date());
     }
 }

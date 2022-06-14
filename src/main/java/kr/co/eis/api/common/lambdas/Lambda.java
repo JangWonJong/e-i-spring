@@ -4,6 +4,7 @@ import kr.co.eis.api.auth.domains.Messenger;
 import org.springframework.cglib.core.internal.Function;
 
 import java.io.File;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
@@ -54,8 +55,8 @@ public class Lambda {
         return f.apply(s);
     }
     public static String date(){
-        Supplier<Date> f = Date::new;
-        return String.valueOf(f.get());
+        Supplier<String> f = () -> string(LocalDate.now());
+        return f.get();
     }
 
     public static String string(Object object){
